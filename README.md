@@ -19,18 +19,18 @@ git clone https://github.com/andrewmacheret/moodru.git
 1. Install the following npm files:
 ```sh
 cd /home/andrewm/node
-sudo npm install express
-sudo npm install file
-sudo npm install forever
-sudo npm install socket.io
-sudo npm install mongodb
-sudo npm install mongoose
-sudo npm install mongoose-types
-sudo npm install passport
-sudo npm install passport-facebook
-sudo npm install passport-google
-sudo npm install passport.socketio
-sudo npm install when
+npm install express
+npm install file
+npm install forever
+npm install socket.io
+npm install mongodb
+npm install mongoose
+npm install mongoose-types
+npm install passport
+npm install passport-facebook
+npm install passport-google
+npm install passport.socketio
+npm install when
 ```
 
 1. create a file `/home/andrewm/node/express.json` (with permissions `600`) that contains the following: 
