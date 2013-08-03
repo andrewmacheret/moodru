@@ -4,6 +4,7 @@ moodru
 0. Prereqs:
  * A unix server with port 80 open
  * Node.js
+ * mongodb
 
 1. Clone the repo
 cd /home/andrewm/node
