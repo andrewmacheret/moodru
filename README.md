@@ -1,7 +1,7 @@
 moodru
 ======
 
-0. Prereqs:
+1. Prereqs:
  * A unix server with the following installed
    * Node.js
    * mongodb
@@ -16,7 +16,7 @@ cd node
 git clone https://github.com/andrewmacheret/moodru.git
 ```
 
-2. Install the following npm files:
+1. Install the following npm files:
 ```sh
 cd /home/andrewm/node
 sudo npm install express
@@ -33,7 +33,7 @@ sudo npm install passport.socketio
 sudo npm install when
 ```
 
-3. create a file `/home/andrewm/node/express.json` (with permissions `600`) that contains the following: 
+1. create a file `/home/andrewm/node/express.json` (with permissions `600`) that contains the following: 
 ```json
 {
 "key": "connect.sid",
@@ -41,7 +41,7 @@ sudo npm install when
 }
 ```
 
-4. create a file `/home/andrewm/node/facebook.json` (with permissions `600`) that contains the following:
+1. create a file `/home/andrewm/node/facebook.json` (with permissions `600`) that contains the following:
 ```json
 {
 "clientID": "<facebook clientId>",
@@ -49,17 +49,15 @@ sudo npm install when
 }
 ```
 
-5. Start the node server
-
+1. Start the node server
 Either go to that directory and typing:
 ```sh
 sudo node moodru.js
 ```
-
 ... or to run it in "forever" mode:
 ```sh
 sudo forever start moodru.js
 ```
 
-6. Test it by going to http://andrewmacheret.com/moodru
+1. Test it by going to http://andrewmacheret.com/moodru
 
