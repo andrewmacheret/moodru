@@ -10,30 +10,16 @@ moodru
 
 1. Clone the repo
 ```sh
-cd
-mkdir node
-cd node
 git clone https://github.com/andrewmacheret/moodru.git
 ```
 
-1. Install the following npm files:
+1. Install the npm files:
 ```sh
-cd /home/andrewm/node
-npm install express
-npm install file
-npm install forever
-npm install socket.io
-npm install mongodb
-npm install mongoose
-npm install mongoose-types
-npm install passport
-npm install passport-facebook
-npm install passport-google
-npm install passport.socketio
-npm install when
+cd moodru
+sudo ./setup.sh
 ```
 
-1. create a file `/home/andrewm/node/express.json` (with permissions `600`) that contains the following: 
+1. create a file `express.json` (with permissions `600`) that contains the following: 
 ```json
 {
 "key": "connect.sid",
@@ -41,7 +27,7 @@ npm install when
 }
 ```
 
-1. create a file `/home/andrewm/node/facebook.json` (with permissions `600`) that contains the following:
+1. create a file `facebook.json` (with permissions `600`) that contains the following:
 ```json
 {
 "clientID": "<facebook clientId>",
@@ -50,7 +36,7 @@ npm install when
 ```
 
 1. Start the node server
-Either go to that directory and typing:
+To run and be able to terminate with ctrl-c:
 ```sh
 sudo node moodru.js
 ```
