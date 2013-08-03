@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
+  <meta name="viewport" content="width=device-width">
+  <title>moodru</title>
+  <link href="index.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+  <script type="text/javascript" src="//www.google.com/jsapi"></script>
+  <script type="text/javascript" src="/moodru/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/moodru/index.js"></script>
+
+  <!-- templates -->
+
+  <script type="text/template" id="template-loading">
+    <div id="loading">
+      <img class="spinner" src="/moodru/spinner.gif" />
+    </div>
+  </script>
+
+  <script type="text/template" id="template-user-menu">
+    <div id="user-menu">
+      <div id="welcome-message"><%= welcome %></div>
+      <a id="logout" href="/moodru/logout">Logout</a>
+    </div>
+  </script>
+
+  <script type="text/template" id="template-add-diary">
+    <div id="add-diary">
+      <form id="add-diary-form" onsubmit="return false" data-ajax="false">
+        <h1 id="add-diary-head">Diary Card</h1>
+        <ul id="add-dirary-list"><%= emotionList %></ul>
+      </form>
+    </div>
+  </script>
+
+  <script type="text/template" id="template-button-menu">
+    <div id="button-menu">
+      <%= menuItems %>
+    </div>
+  </script>
+
+  <script type="text/template" id="template-button-menu-item">
+    <div class="menu-item" id="go-<%= name %>">
+      <div class="menu-button"></div>
+      <span class="menu-button-label"><%= label %><span>
+    </div>
+  </script>
+
+  <script type="text/template" id="template-add-diary-emotion">
+    <li><input type="number" min="0" max="100" name="<%= name %>" size="1" /> % <span><%= label %></span></li>
+  </script>
+
+  <script type="text/template" id="template-diaries">
+    <div id="diaries">
+      <span id="diaries-head">Diary:</span>
+      <ul id="diaries-list"><%= diaryList %></ul>
+      <span id="diaries-count"><%= diaryCount %></span>
+    </div>
+  </script>
+
+  <script type="text/template" id="template-diaries-entry">
+    <li><%= emotions %> - <a href="#" onclick="return false" title="<%= dateAbsolute %>"><%= dateRelative %></a></li>
+  </script>
+
+  <script type="text/template" id="template-diaries-count">
+    <span id="diaries-count-num"><%= count %></span> <span id="diaries-count-message"><%= message %></span>
+  </script>
+
+  <script type="text/template" id="template-chart">
+    <div id="chart-wrapper">
+      <h1 id="chart-head">Graphs</h1>
+      <div id="chart"></div>
+    </div>
+  </script>
+
+  <!-- end templates -->
+
+</head>
+<body id="main">
+  <div id="wrapper"></div>
+</body>
+</html>
+
