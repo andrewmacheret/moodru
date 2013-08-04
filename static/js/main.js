@@ -167,7 +167,7 @@ google.setOnLoadCallback(function() {
       
       var updateEmotionValue = function(e, ui) {
         var emotionText = $(ui.handle).parent().parent().children('.emotion-text').children('.emotion-amount');
-        emotionText.html(pad(''+ui.value, '&nbsp;', 3));
+        emotionText.html(pad(ui.value + '%', '&nbsp;', 4));
         var outOf255 = Math.floor(ui.value * 255 / 100);
         var r = 255;
         var g = 255 - outOf255;
