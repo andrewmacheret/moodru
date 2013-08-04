@@ -158,8 +158,8 @@ google.setOnLoadCallback(function() {
       ];
       var htmlMenu = buildMenu(menuData);
 
-      var updateEmotionValue = function(e, ui) {
-        var emotionText = $(ui.handle).parent().parent().children('.emotion-text');
+      var updateEmotionValue = function(handle, value) {
+        var emotionText = $(handle).parent().parent().children('.emotion-text').children('.emotion-amount');
         emotionText.html(ui.value);
         var outOf255 = Math.floor(ui.value * 255 / 100);
         var r = 255;
@@ -174,10 +174,11 @@ google.setOnLoadCallback(function() {
         orientation: 'horizontal',
         min: 0,
         max: 100,
-        value: 50,
         slide: updateEmotionValue,
         change: updateEmotionValue
-      });
+      }).slider("value", 0);
+      
+      
 
       // attach events
       var addDiaryForm = $('#add-diary-form');
@@ -190,15 +191,6 @@ google.setOnLoadCallback(function() {
           }
         }
         socket.emit('diary:put', diaryData);
-      });
-      $('#add-diary-form input[type=number]').on('change', function(e) {
-        //alert('min=' + this.min ' max=' + this.max + ' value=' + this.value + ' cmpr=' + (this.value > this.max));
-        var value = Number(this.value);
-        var min = Number(this.min);
-        var max = Number(this.max);
-        if (value < min) value = min;
-        if (value > max) value = max;
-        this.value = value;
       });
       $('#go-submit').on('click', function(e) {
         addDiaryForm.submit();
