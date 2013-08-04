@@ -162,9 +162,9 @@ google.setOnLoadCallback(function() {
         var emotionText = $(ui.handle).parent().parent().children('.emotion-text');
         emotionText.html(ui.value);
         var outOf255 = Math.floor(ui.value * 255 / 100);
-        var r = outOf255;
-        var g = 255 - outOf255;
-        var b = 0;
+        var r = 255;
+        var g = outOf255;
+        var b = outOf255;
         emotionText.css('background-color', 'rgb(' + r + ',' + g + ',' + b + ')');
       }
       
