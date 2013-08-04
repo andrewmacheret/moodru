@@ -100,3 +100,8 @@ body {
 .emotion-slider, .emotion-slider .ui-slider-handle {
   cursor: pointer !important;
 }
+
+.emotion-amount {
+  padding: 3px;
+}
+

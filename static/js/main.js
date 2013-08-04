@@ -165,7 +165,7 @@ google.setOnLoadCallback(function() {
         var r = 255;
         var g = 255 - outOf255;
         var b = 255 - outOf255;
-        emotionText.css('background-color', 'rgb(' + r + ',' + g + ',' + b + ')');
+        emotionText.css('border', '3px solid rgb(' + r + ',' + g + ',' + b + ')');
       }
       
       // add all the info to the page
