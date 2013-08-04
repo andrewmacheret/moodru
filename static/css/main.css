@@ -89,6 +89,6 @@ body {
 }
 
 .emotion-slider {
-  linear-gradient(to right, #f00, #0f0) !important;
+  background: linear-gradient(to right, #f00, #0f0) !important;
 }
 
