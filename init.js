@@ -26,7 +26,6 @@ exports.init = function(mongoose, config) {
   var http = require('http');
   var server = http.createServer(app);
   var io = require('socket.io').listen(server, {resource: baseDir + '/socket.io'});
-  var aws = require('aws-sdk');
   var when = require('when');
   var nodefn = require('when/node/function');
   var passport = require('passport');
