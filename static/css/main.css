@@ -97,6 +97,6 @@ body {
   background-image:         linear-gradient(to right, #fff, #f00) !important;
 }
 
-.emotion-slider .ui-slider-handle {
-  cursor: point;
+.emotion-slider, .emotion-slider .ui-slider-handle {
+  cursor: pointer !important;
 }
