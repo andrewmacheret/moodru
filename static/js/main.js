@@ -143,11 +143,9 @@ google.setOnLoadCallback(function() {
     var goCard = function() {
       // build the add diary section
       var emotionList = '';
-      var sliderMap = {};
       for (var i=0; i<emotions.length; i++) {
         var emotion = emotions[i];
         emotionList += _.template(templateAddDiaryEmotion, {name: emotion, label: emotion});
-        sliderMap['emotion-slider-' + emotion] = 'emotion-text-' + emotion;
       }
       var htmlAddDiary = _.template(templateAddDiary, {emotionList: emotionList});
 
@@ -161,7 +159,12 @@ google.setOnLoadCallback(function() {
       var htmlMenu = buildMenu(menuData);
 
       var updateEmotionValue = function(e, ui) {
-        sliderMap[ui.handle.id].html(ui.value);
+        var emotionText = $(ui.handle).parent().parent().children('.emotion-text');
+        emotionText.html(ui.value);
+        var r = ((ui.value * 255) / 101).toHexString(16);
+        var g = (255 - (ui.value * 255) / 101).toHexString(16);
+        var b = 0.toHexString(16);
+        emotionText.css('background-color', '#' + r + g + b);
       }
       
       // add all the info to the page
@@ -169,6 +172,7 @@ google.setOnLoadCallback(function() {
       $('.emotion-slider').slider({
         orientation: 'horizontal',
         range: 'min',
+        min: 0,
         max: 100,
         value: 50,
         slide: updateEmotionValue,
