@@ -46,7 +46,7 @@ body {
 }
 #add-diary li {
   list-style-type: none;
-  margin-bottom: 45px;
+  margin-bottom: 10px;
 }
 #add-diary li span {
   text-transform: capitalize;
