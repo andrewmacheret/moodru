@@ -1,0 +1,90 @@
+body {
+  fontf-family: 'calluna-sans';
+  font-size: 36px;
+  line-height: 1.6em;
+  font-weight: 400;
+  color: #333;
+}
+
+
+
+.spinner {
+  width: 400px;
+  height: 400px;
+  display: inline-block;
+  margin-left: 90px;
+  margin-top: 200px;
+}
+
+#wrapper {
+  padding: 5px;
+  width: 580px;
+}
+
+#chart {
+  width: 115%;
+  margin-left: -15%;
+  height: 650px;
+}
+
+#chart-head {
+  font-size: 64px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  z-index: 1;
+}
+
+#add-diary {
+  float: left;
+  padding: 10px;
+}
+#add-diary input[type=number] {
+  width: 3em;
+}
+#add-diary li {
+  list-style-type: none;
+  margin-bottom: 45px;
+}
+#add-diary li span {
+  text-transform: capitalize;
+}
+#add-diary-head {
+  font-size: 64px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+#button-menu {
+  padding: 10px;
+}
+.menu-item {
+  float: right;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.menu-button {
+  width: 128px;
+  height: 128px;
+  background-color: blue;
+  cursor: pointer;
+}
+
+.menu-button-label {
+  color: #aaa;
+}
+
+#go-submit.menu-item {
+  margin-top: 80px;
+  margin-bottom: 0;
+}
+
+#go-submit.menu-item .menu-button {
+  background-image: url('/moodru/images/moodru_icon.png');
+}
+
