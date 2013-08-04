@@ -174,6 +174,7 @@ google.setOnLoadCallback(function() {
         orientation: 'horizontal',
         min: 0,
         max: 100,
+        step: 5,
         slide: updateEmotionValue,
         change: updateEmotionValue
       }).slider("value", 0);
