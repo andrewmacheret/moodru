@@ -158,12 +158,17 @@ google.setOnLoadCallback(function() {
       ];
       var htmlMenu = buildMenu(menuData);
 
+      var hex = function(num) {
+        var value = num.toString(16);
+        return str.length < 2 ? '0' + str : str;
+      }
       var updateEmotionValue = function(e, ui) {
         var emotionText = $(ui.handle).parent().parent().children('.emotion-text');
         emotionText.html(ui.value);
-        var r = ((ui.value * 255) / 101).toHexString(16);
-        var g = (255 - (ui.value * 255) / 101).toHexString(16);
-        var b = 0.toHexString(16);
+        var outOf255 = Math.floor(ui.value * 255 / 100);
+        var r = hex(outOf255);
+        var g = hex(255 - outOf255);
+        var b = hex(0);
         emotionText.css('background-color', '#' + r + g + b);
       }
       
