@@ -160,6 +160,7 @@ google.setOnLoadCallback(function() {
 
       // add all the info to the page
       wrapper.html(htmlAddDiary + htmlMenu);
+      $('.slider').slider();
 
       // attach events
       var addDiaryForm = $('#add-diary-form');
