@@ -89,10 +89,7 @@ body {
 }
 
 .emotion-slider {
-  background-color: green;
-}
-.emotion-slider .ui-slider-range {
-  background-color: red;
+  linear-gradient(to right, #f00, #0f0) !important;
 }
 
 .ui-slider {

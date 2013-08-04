@@ -158,25 +158,20 @@ google.setOnLoadCallback(function() {
       ];
       var htmlMenu = buildMenu(menuData);
 
-      var hex = function(num) {
-        var str = num.toString(16);
-        return str.length < 2 ? '0' + str : str;
-      }
       var updateEmotionValue = function(e, ui) {
         var emotionText = $(ui.handle).parent().parent().children('.emotion-text');
         emotionText.html(ui.value);
         var outOf255 = Math.floor(ui.value * 255 / 100);
-        var r = hex(outOf255);
-        var g = hex(255 - outOf255);
-        var b = hex(0);
-        emotionText.css('background-color', '#' + r + g + b);
+        var r = outOf255;
+        var g = 255 - outOf255;
+        var b = 0;
+        emotionText.css('background-color', 'rgb(' + r + ',' + g + ',' + b + ')');
       }
       
       // add all the info to the page
       wrapper.html(htmlAddDiary + htmlMenu);
       $('.emotion-slider').slider({
         orientation: 'horizontal',
-        range: 'min',
         min: 0,
         max: 100,
         value: 50,
