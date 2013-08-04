@@ -169,9 +169,9 @@ google.setOnLoadCallback(function() {
         var emotionText = $(ui.handle).parent().parent().children('.emotion-text').children('.emotion-amount');
         emotionText.html(pad(ui.value + '%', '&nbsp;', 4));
         var outOf255 = Math.floor(ui.value * 255 / 100);
-        var r = 255;
-        var g = 255 - outOf255;
-        var b = 255 - outOf255;
+        var r = outOf255;
+        var g = 0;
+        var b = 0;
         emotionText.css('color', '3px solid rgb(' + r + ',' + g + ',' + b + ')');
       }
       
