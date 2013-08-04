@@ -158,9 +158,16 @@ google.setOnLoadCallback(function() {
       ];
       var htmlMenu = buildMenu(menuData);
 
+      var pad = function(str, ch, length) {
+        for (var i=str.length; i < length; i++) {
+          str = ch + str;
+        }
+        return str;
+      }
+      
       var updateEmotionValue = function(e, ui) {
         var emotionText = $(ui.handle).parent().parent().children('.emotion-text').children('.emotion-amount');
-        emotionText.html(ui.value);
+        emotionText.html(pad(''+ui.value, '&nbsp;', 3));
         var outOf255 = Math.floor(ui.value * 255 / 100);
         var r = 255;
         var g = 255 - outOf255;
