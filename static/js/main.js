@@ -158,8 +158,8 @@ google.setOnLoadCallback(function() {
       ];
       var htmlMenu = buildMenu(menuData);
 
-      var updateEmotionValue = function(handle, value) {
-        var emotionText = $(handle).parent().parent().children('.emotion-text').children('.emotion-amount');
+      var updateEmotionValue = function(e, ui) {
+        var emotionText = $(ui.handle).parent().parent().children('.emotion-text').children('.emotion-amount');
         emotionText.html(ui.value);
         var outOf255 = Math.floor(ui.value * 255 / 100);
         var r = 255;
