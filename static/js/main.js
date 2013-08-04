@@ -159,7 +159,7 @@ google.setOnLoadCallback(function() {
       var htmlMenu = buildMenu(menuData);
 
       var hex = function(num) {
-        var value = num.toString(16);
+        var str = num.toString(16);
         return str.length < 2 ? '0' + str : str;
       }
       var updateEmotionValue = function(e, ui) {
