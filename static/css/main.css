@@ -88,3 +88,13 @@ body {
   background-image: url('/moodru/images/moodru_icon.png');
 }
 
+.emotion-slider {
+  background-color: green;
+}
+.emotion-slider .ui-slider-range {
+  background-color: red;
+}
+
+.ui-slider {
+  background-color: green;
+}

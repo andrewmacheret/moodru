@@ -143,9 +143,11 @@ google.setOnLoadCallback(function() {
     var goCard = function() {
       // build the add diary section
       var emotionList = '';
+      var sliderMap = {};
       for (var i=0; i<emotions.length; i++) {
         var emotion = emotions[i];
         emotionList += _.template(templateAddDiaryEmotion, {name: emotion, label: emotion});
+        sliderMap['emotion-slider-' + emotion] = 'emotion-text-' + emotion;
       }
       var htmlAddDiary = _.template(templateAddDiary, {emotionList: emotionList});
 
@@ -158,9 +160,20 @@ google.setOnLoadCallback(function() {
       ];
       var htmlMenu = buildMenu(menuData);
 
+      var updateEmotionValue = function() {
+        sliderMap[ui.handle.id].html(ui.value);
+      }
+      
       // add all the info to the page
       wrapper.html(htmlAddDiary + htmlMenu);
-      $('.slider').slider();
+      $('.emotion-slider').slider({
+        orientation: 'horizontal',
+        range: 'min',
+        max: 100,
+        value: 50,
+        slide: updateEmotionValue,
+        change: updateEmotionValue
+      });
 
       // attach events
       var addDiaryForm = $('#add-diary-form');

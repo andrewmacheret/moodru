@@ -53,7 +53,10 @@
   </script>
 
   <script type="text/template" id="template-add-diary-emotion">
-    <li><div class="slider"></div> % <span><%= label %></span></li>
+    <li>
+      <div class="emotion-text" id="emotion-text-<%= name %>"><span class="emotion-amount"></span> % <span class="emotion-name"><%= label %></span></div>
+      <div class="emotion-slider" id="emotion-slider-<%= name %>"></div>
+    </li>
   </script>
 
   <script type="text/template" id="template-diaries">
