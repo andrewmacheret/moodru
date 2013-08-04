@@ -160,7 +160,7 @@ google.setOnLoadCallback(function() {
       ];
       var htmlMenu = buildMenu(menuData);
 
-      var updateEmotionValue = function() {
+      var updateEmotionValue = function(e, ui) {
         sliderMap[ui.handle.id].html(ui.value);
       }
       
