@@ -89,6 +89,10 @@ body {
 }
 
 .emotion-slider {
-  background: linear-gradient(to right, #f00, #fff) !important;
+  background-color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#fff), to(#f00));
+  background-image: -webkit-linear-gradient(left, #fff, #f00);
+  background-image:    -moz-linear-gradient(left, #fff, #f00);
+  background-image:      -o-linear-gradient(left, #fff, #f00);
+  background-image:         linear-gradient(to right, #fff, #f00);
 }
-

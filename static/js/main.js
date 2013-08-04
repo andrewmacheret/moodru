@@ -163,8 +163,8 @@ google.setOnLoadCallback(function() {
         emotionText.html(ui.value);
         var outOf255 = Math.floor(ui.value * 255 / 100);
         var r = 255;
-        var g = outOf255;
-        var b = outOf255;
+        var g = 255 - outOf255;
+        var b = 255 - outOf255;
         emotionText.css('background-color', 'rgb(' + r + ',' + g + ',' + b + ')');
       }
       
