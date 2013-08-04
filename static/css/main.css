@@ -103,6 +103,7 @@ body {
 
 .emotion-amount {
   padding: 3px;
-  font-family: monospace;
+  font-family: Courier New;
+  font-weight: bold;
 }
 
