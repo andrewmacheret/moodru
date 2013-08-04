@@ -1,0 +1,19 @@
+#login-facebook {
+  display: inline-block;
+  width: 255px;
+  height: 44px;
+  background: url('/moodru/images/buttons.png') 0 0;
+}
+#login-facebook:hover {
+  background-position: 0 -43px;
+}
+
+#login-google {
+  display: inline-block;
+  width: 255px;
+  height: 44px;
+  background: url('/moodru/images/buttons.png') 0 -258px;
+}
+#login-google:hover {
+  background-position: 0 -301px;
+}
