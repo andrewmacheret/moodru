@@ -1,5 +1,5 @@
 body {
-  fontf-family: 'calluna-sans';
+  fontf-family: 'Helvetica';
   font-size: 36px;
   line-height: 1.6em;
   font-weight: 400;
@@ -103,7 +103,7 @@ body {
 
 .emotion-amount {
   padding: 3px;
-  font-family: Courier New;
+  font-family: 'Courier New';
   font-weight: bold;
 }
 
