@@ -26,7 +26,6 @@ exports.init = function(mongoose, config) {
   var http = require('http');
   var server = http.createServer(app);
   var io = require('socket.io').listen(server, {resource: baseDir + '/socket.io'});
-  var aws = require('aws-sdk');
   var when = require('when');
   var nodefn = require('when/node/function');
   var passport = require('passport');
@@ -67,6 +66,15 @@ exports.init = function(mongoose, config) {
     });
   });
 
+  // define the paths allowed for a non-authenticated user
+  var login_pages = {};
+  login_pages[baseDir + '/login'] = true;
+  login_pages[baseDir + '/login/index.html'] = true;
+  login_pages[baseDir + '/css/login.css'] = true;
+  login_pages[baseDir + '/js/login.js'] = true;
+  login_pages[baseDir + '/images/moodru_main_logo.png'] = true;
+  login_pages[baseDir + '/images/buttons.png'] = true;
+
   // have the server listen to all the allowed paths
   Object.keys(allowedPaths).forEach(function(relPath) {
     var fullPath = allowedPaths[relPath];
@@ -74,8 +82,9 @@ exports.init = function(mongoose, config) {
     app.get(relPath, function(req, res) {
       var userString = (req.user ? req.user.id : '(not logged in)');
 
-      // if the user is not logged in and not requesting to login, then redirect to the login page
-      if (relPath.indexOf( baseDir + '/login' ) != 0 && !req.user) {
+      // if the user is not logged in and not requesting to log in, then redirect to the login page
+      if (!req.user && !login_pages.hasOwnProperty(relPath)) {
+        console.log("requested " + relPath);
         console.log(userString + ' - redirecting to: ' + baseDir + '/login');
         res.redirect(baseDir + '/login');
         return;
