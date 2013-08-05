@@ -16,6 +16,8 @@ google.setOnLoadCallback(function() {
     var templateChart = $('#template-chart').html();
     var templateMenu = $('#template-button-menu').html();
     var templateMenuItem = $('#template-button-menu-item').html();
+    var templateSkills = $('#template-skills').html();
+    var templatePanicSkills = $('#template-panic-skills').html();
 
     var setWrapper = function(classSuffix, content) {
       wrapper.html('<div class="wrapper-' + classSuffix + '">' + content + '</div>');
@@ -188,6 +190,7 @@ google.setOnLoadCallback(function() {
       var menuData = [
         {name: 'add-card', label: 'Add Card'},
         {name: 'graphs', label: 'Graphs'},
+        {name: 'share', label: 'Share'},
         {name: 'panic', label: 'Panic!'},
         {name: 'logout', label: 'Logout'}
       ];
@@ -229,7 +232,6 @@ google.setOnLoadCallback(function() {
       // build the menu
       var menuData = [
         {name: 'home', label: 'Home'},
-        {name: 'logout', label: 'Logout'},
         {name: 'submit', label: 'Submit'}
       ];
       var htmlMenu = buildMenu(menuData);
@@ -259,8 +261,7 @@ google.setOnLoadCallback(function() {
 
       // build the menu
       var menuData = [
-        {name: 'home', label: 'Home'},
-        {name: 'logout', label: 'Logout'}
+        {name: 'home', label: 'Home'}
       ];
       var htmlMenu = buildMenu(menuData);
 
@@ -276,10 +277,37 @@ google.setOnLoadCallback(function() {
       window.location.replace('/moodru/logout');
     };
 
+    var goSkills = function() {
+      // build the skills
+      var htmlSkills = templateSkills;
+
+      // build the menu
+      var menuData = [
+        {name: 'home', label: 'Home'}
+      ];
+      var htmlMenu = buildMenu(menuData);
+
+      // add all the info to the page
+      setWrapper('skills', htmlSkills + htmlMenu);
+      
+      attachEventsToMenu();
+    };
+
+    var goPanicSkills = function() {
+      // build the skills
+      var htmlPanicSkills = templatePanicSkills;
+
+      // build the menu
+      var menuData = [
+        {name: 'home', label: 'Home'}
+      ];
+      var htmlMenu = buildMenu(menuData);
+
+      // add all the info to the page
+      setWrapper('skills', htmlPanicSkills + htmlMenu);
+      
+      attachEventsToMenu();
+    };
   });
-  
-  var goPanic = function() {
-    // TODO
-  }
 
 });
