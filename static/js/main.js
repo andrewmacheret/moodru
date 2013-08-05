@@ -201,7 +201,6 @@ google.setOnLoadCallback(function() {
       htmlUserMenu = _.template(templateUserMenu, {welcome: welcome});
 
       // build the diaries section
-      diaries = data.diaries;
       var diaryList = '';
       for (var i=0; i<diaries.length; i++) {
         var diary = diaries[i];
