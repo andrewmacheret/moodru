@@ -30,6 +30,7 @@ google.setOnLoadCallback(function() {
     var emotions = [];
     var diaries = [];
     var user = {};
+    var initDate = {};
 
     // on a initialization:
     socket.on('init', function(data) {
@@ -41,6 +42,7 @@ google.setOnLoadCallback(function() {
       emotions = data.emotions;
       diaries = data.diaries;
       user = data.user;
+      initDate = data.date;
       
       goHome();
     });
@@ -204,7 +206,7 @@ google.setOnLoadCallback(function() {
       var diaryList = '';
       for (var i=0; i<diaries.length; i++) {
         var diary = diaries[i];
-        diaryList += buildDiaryEntry(data.date, diary);
+        diaryList += buildDiaryEntry(initDate, diary);
       }
       var diaryCount = buildDiaryCount(diaries.length);
       htmlDiaries = _.template(templateDiaries, {diaryList: diaryList, diaryCount: diaryCount});
