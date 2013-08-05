@@ -146,7 +146,7 @@ google.setOnLoadCallback(function() {
       }
     }
     
-    var setWrapper(classSuffix, content) {
+    var setWrapper = function(classSuffix, content) {
       wrapper.html('<div class="wrapper-' + classSuffix + '">' + content + '</div>');
     }
     
@@ -155,7 +155,7 @@ google.setOnLoadCallback(function() {
         str = ch + str;
       }
       return str;
-    }
+    };
     
     var buildSliders = function() {
       var updateEmotionValue = function(e, ui) {
