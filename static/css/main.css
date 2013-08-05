@@ -42,12 +42,12 @@ body {
   padding: 10px;
   width: 345px;
   height: 600px;
-  list-style-type: none;
 }
 
 #diaries-list  {
   font-size: 18px;
   line-height: 1.5em;
+  list-style-type: none;
 }
 
 .diary-entry {
