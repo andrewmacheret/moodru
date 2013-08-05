@@ -56,7 +56,10 @@ google.setOnLoadCallback(function() {
         return;
       }
 
-      goHome();
+      initDate = data.date;
+      diaries.push( data.diary );
+      
+      goSkills();
     });
 
     // temporary go to login page on bad connection
