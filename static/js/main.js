@@ -79,8 +79,7 @@ google.setOnLoadCallback(function() {
       for (var j=0; j<emotions.length; j++) {
         emotionsList[j] = emotionsList[j].join(' ');
       }
-      emotionsList.slice(0, 3);
-      emotionsText = emotionsList.join(', ') + ' ...';
+      var emotionsText = emotionsList.slice(0, 3).join(', ') + ' ...';
       
       var date = moment(diary.created);
       var dateAbsolute = date.toISOString();
