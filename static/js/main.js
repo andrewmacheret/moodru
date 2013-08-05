@@ -17,7 +17,7 @@ google.setOnLoadCallback(function() {
     var templateMenuItem = $('#template-button-menu-item').html();
 
     // set page to loading until it's ready
-    wrapper.html( templateLoadingHTML );
+    setWrapper( 'loading', templateLoadingHTML );
 
     // connect to socket.io
     var socket = io.connect(null, {resource: 'moodru/socket.io'});
@@ -35,25 +35,8 @@ google.setOnLoadCallback(function() {
 
       emotions = data.emotions;
       diaries = data.diaries;
+      
       goHome();
-
-      /*
-      // build the user menu
-      var welcome = 'Welcome ' + data.user.displayName + '.';
-      htmlUserMenu = _.template(templateUserMenu, {welcome: welcome});
-      */
-
-      /*
-      // build the diaries section
-      diaries = data.diaries;
-      var diaryList = '';
-      for (var i=0; i<diaries.length; i++) {
-        var diary = diaries[i];
-        diaryList += buildDiaryEntry(data.date, diary);
-      }
-      var diaryCount = buildDiaryCount(diaries.length);
-      htmlDiaries = _.template(templateDiaries, {diaryList: diaryList, diaryCount: diaryCount});
-      */
     });
 
     socket.on('diary:put', function(data) {
@@ -140,35 +123,41 @@ google.setOnLoadCallback(function() {
       return _.template(templateMenu, {menuItems: menuItems});
     };
     
-    var goHome = function() {
-      
+    var attachEventsToMenu = function(form) {
+      $('#go-home').on('click', function(e) {
+        goHome();
+      });
+      $('#go-add-card').on('click', function(e) {
+        goCard();
+      });
+      $('#go-panic').on('click', function(e) {
+        goPanic();
+      });
+      $('#go-graphs').on('click', function(e) {
+        goGraphs();
+      });
+      $('#go-logout').on('click', function(e) {
+        goLogout();
+      });
+      if (form) {
+        $('#go-submit').on('click', function(e) {
+          form.submit();
+        });
+      }
     }
-
-    var goCard = function() {
-      // build the add diary section
-      var emotionList = '';
-      for (var i=0; i<emotions.length; i++) {
-        var emotion = emotions[i];
-        emotionList += _.template(templateAddDiaryEmotion, {name: emotion, label: emotion});
+    
+    var setWrapper(classSuffix, content) {
+      wrapper.html('<div class="wrapper-' + classSuffix + '">' + content + '</div>');
+    }
+    
+    var pad = function(str, ch, length) {
+      for (var i=str.length; i < length; i++) {
+        str = ch + str;
       }
-      var htmlAddDiary = _.template(templateAddDiary, {emotionList: emotionList});
-
-      // build the menu
-      var menuData = [
-        {name: 'graphs', label: 'Graphs'},
-        {name: 'skills', label: 'Skills'},
-        {name: 'logout', label: 'Logout'},
-        {name: 'submit', label: 'Submit'}
-      ];
-      var htmlMenu = buildMenu(menuData);
-
-      var pad = function(str, ch, length) {
-        for (var i=str.length; i < length; i++) {
-          str = ch + str;
-        }
-        return str;
-      }
-      
+      return str;
+    }
+    
+    var buildSliders = function() {
       var updateEmotionValue = function(e, ui) {
         var item = $(ui.handle).parent().parent();
         
@@ -185,8 +174,6 @@ google.setOnLoadCallback(function() {
         emotionText.css('color', '3px solid rgb(' + r + ',' + g + ',' + b + ')');
       }
       
-      // add all the info to the page
-      wrapper.html(htmlAddDiary + htmlMenu);
       $('.emotion-slider').slider({
         orientation: 'horizontal',
         min: 0,
@@ -195,30 +182,72 @@ google.setOnLoadCallback(function() {
         slide: updateEmotionValue,
         change: updateEmotionValue
       }).slider("value", 0);
+    };
+    
+    var goHome = function() {
+      // build the menu
+      var menuData = [
+        {name: 'add-card', label: 'Add Diary Card'},
+        {name: 'graphs', label: 'Graphs'},
+        {name: 'panic', label: 'Panic!'},
+        {name: 'logout', label: 'Logout'}
+      ];
+      var htmlMenu = buildMenu(menuData);
       
-      
+      // build the user menu
+      var welcome = 'Welcome ' + data.user.displayName + '.';
+      htmlUserMenu = _.template(templateUserMenu, {welcome: welcome});
 
+      // build the diaries section
+      diaries = data.diaries;
+      var diaryList = '';
+      for (var i=0; i<diaries.length; i++) {
+        var diary = diaries[i];
+        diaryList += buildDiaryEntry(data.date, diary);
+      }
+      var diaryCount = buildDiaryCount(diaries.length);
+      htmlDiaries = _.template(templateDiaries, {diaryList: diaryList, diaryCount: diaryCount});
+      
+      setWrapper('home', htmlUserMenu + htmlDiaries + htmlMenu);
+      
+      attachEventsToMenu();
+    }
+
+    var goCard = function() {
+      // build the add diary section
+      var emotionList = '';
+      for (var i=0; i<emotions.length; i++) {
+        var emotion = emotions[i];
+        emotionList += _.template(templateAddDiaryEmotion, {name: emotion, label: emotion});
+      }
+      var htmlAddDiary = _.template(templateAddDiary, {emotionList: emotionList});
+
+      // build the menu
+      var menuData = [
+        {name: 'home', label: 'Home'},
+        {name: 'graphs', label: 'Graphs'},
+        {name: 'logout', label: 'Logout'},
+        {name: 'submit', label: 'Submit'}
+      ];
+      var htmlMenu = buildMenu(menuData);
+
+      // add all the info to the page
+      setWrapper('add-card', htmlAddDiary + htmlMenu);
+      
+      buildSliders();
+      
       // attach events
       var addDiaryForm = $('#add-diary-form');
       addDiaryForm.on('submit', function(e) {
-        var diaryData = {emotions: addDiaryForm.serializeArray()};
-        for (var i=0; i<diaryData.emotions.length; i++) {
-          if (diaryData.emotions[i].value === '') {
-            alert('Please fill in the entire card before submitting.');
-            return;
-          }
+        if (!confirm('Are you sure you want to add this diary card?')) {
+          return;
         }
+        
+        var diaryData = {emotions: addDiaryForm.serializeArray()};
         socket.emit('diary:put', diaryData);
       });
-      $('#go-submit').on('click', function(e) {
-        addDiaryForm.submit();
-      });
-      $('#go-graphs').on('click', function(e) {
-        goGraphs();
-      });
-      $('#go-logout').on('click', function(e) {
-        goLogout();
-      });
+      
+      attachEventsToMenu(addDiaryForm);
     };
 
     var goGraphs = function() {
@@ -227,21 +256,17 @@ google.setOnLoadCallback(function() {
 
       // build the menu
       var menuData = [
-        {name: 'logout', label: 'Logout'},
-        {name: 'skills', label: 'Skills'},
-        {name: 'card', label: 'Add Card'}
+        {name: 'home', label: 'Home'},
+        {name: 'card', label: 'Add Card'},
+        {name: 'panic', label: 'Panic!'},
+        {name: 'logout', label: 'Logout'}
       ];
       var htmlMenu = buildMenu(menuData);
 
       // add all the info to the page
-      wrapper.html(htmlChart + htmlMenu);
-
-      $('#go-card').on('click', function(e) {
-        goCard();
-      });
-      $('#go-logout').on('click', function(e) {
-        goLogout();
-      });
+      setWrapper('graphs', htmlChart + htmlMenu);
+      
+      attachEventsToMenu();
 
       drawChart();
     };
@@ -251,5 +276,9 @@ google.setOnLoadCallback(function() {
     };
 
   });
+  
+  var goPanic = function() {
+    // TODO
+  }
 
 });
