@@ -35,7 +35,7 @@ google.setOnLoadCallback(function() {
 
       emotions = data.emotions;
       diaries = data.diaries;
-      goCard();
+      goHome();
 
       /*
       // build the user menu
@@ -139,6 +139,10 @@ google.setOnLoadCallback(function() {
       }
       return _.template(templateMenu, {menuItems: menuItems});
     };
+    
+    var goHome = function() {
+      
+    }
 
     var goCard = function() {
       // build the add diary section
@@ -166,8 +170,14 @@ google.setOnLoadCallback(function() {
       }
       
       var updateEmotionValue = function(e, ui) {
-        var emotionText = $(ui.handle).parent().parent().children('.emotion-text').children('.emotion-amount');
-        emotionText.html(pad(ui.value + '%', '&nbsp;', 4));
+        var item = var emotionText = $(ui.handle).parent().parent();
+        
+        var emotionAmount = item.children('.emotion-text').children('.emotion-amount');
+        emotionAmount.html(pad(ui.value + '%', '&nbsp;', 4));
+        
+        var emotionField = item.children('.emotion-field');
+        emotionField.val(ui.value);
+        
         var outOf255 = Math.floor(ui.value * 255 / 100);
         var r = outOf255;
         var g = 0;
