@@ -42,6 +42,7 @@ body {
   padding: 10px;
   width: 345px;
   height: 600px;
+  list-style-type: none;
 }
 
 #diaries-list  {
