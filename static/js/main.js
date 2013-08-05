@@ -79,7 +79,7 @@ google.setOnLoadCallback(function() {
       for (var j=0; j<emotions.length; j++) {
         emotionsList[j] = emotionsList[j].join(' ');
       }
-      var emotionsText = emotionsList.slice(0, 3).join(', ') + ' ...';
+      var emotionsText = emotionsList.slice(0, 3).join(', ');
       
       var date = moment(diary.created);
       var dateAbsolute = date.toISOString();
@@ -202,12 +202,12 @@ google.setOnLoadCallback(function() {
       // build the diaries section
       var diaryList = '';
       for (var i=0; i<diaries.length; i++) {
-        var diary = diaries[diaries.length - i - 1];
-        diaryList += buildDiaryEntry(initDate, diary);
         if (i == 5) {
           diaryList += templateDiariesEntryEtc;
           break;
         }
+        var diary = diaries[diaries.length - i - 1];
+        diaryList += buildDiaryEntry(initDate, diary);
       }
       var diaryCount = buildDiaryCount(diaries.length);
       htmlDiaries = _.template(templateDiaries, {diaryList: diaryList, diaryCount: diaryCount});

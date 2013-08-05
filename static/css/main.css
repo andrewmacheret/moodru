@@ -41,6 +41,12 @@ body {
   float: left;
   padding: 10px;
   width: 345px;
+  height: 500px;
+}
+
+#diaries-list  {
+  font-size: 18px;
+  line-height: 1.5em;
 }
 
 #add-diary {

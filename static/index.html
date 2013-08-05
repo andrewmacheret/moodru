@@ -69,7 +69,10 @@
   </script>
 
   <script type="text/template" id="template-diaries-entry">
-    <li><%= emotions %> - <a href="#" onclick="return false" title="<%= dateAbsolute %>"><%= dateRelative %></a></li>
+    <li>
+      <div><%= emotions %></div>
+      <div><a href="#" onclick="return false" title="<%= dateAbsolute %>"><%= dateRelative %></a></div>
+    </li>
   </script>
 
   <script type="text/template" id="template-diaries-entry-etc">
