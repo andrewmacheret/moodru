@@ -29,6 +29,7 @@ google.setOnLoadCallback(function() {
     // these arrays will be initialized during init
     var emotions = [];
     var diaries = [];
+    var user = {};
 
     // on a initialization:
     socket.on('init', function(data) {
@@ -39,6 +40,7 @@ google.setOnLoadCallback(function() {
 
       emotions = data.emotions;
       diaries = data.diaries;
+      user = data.user;
       
       goHome();
     });
@@ -195,7 +197,7 @@ google.setOnLoadCallback(function() {
       var htmlMenu = buildMenu(menuData);
       
       // build the user menu
-      var welcome = 'Welcome ' + data.user.displayName + '.';
+      var welcome = 'Welcome ' + user.displayName + '.';
       htmlUserMenu = _.template(templateUserMenu, {welcome: welcome});
 
       // build the diaries section
