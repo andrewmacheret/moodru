@@ -206,7 +206,7 @@ google.setOnLoadCallback(function() {
       var diaryCount = buildDiaryCount(diaries.length);
       htmlDiaries = _.template(templateDiaries, {diaryList: diaryList, diaryCount: diaryCount});
       
-      setWrapper('home', htmlUserMenu + htmlDiaries + htmlMenu);
+      setWrapper('home', htmlDiaries + htmlMenu);
       
       attachEventsToMenu();
     }
