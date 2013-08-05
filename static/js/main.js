@@ -16,6 +16,10 @@ google.setOnLoadCallback(function() {
     var templateMenu = $('#template-button-menu').html();
     var templateMenuItem = $('#template-button-menu-item').html();
 
+    var setWrapper = function(classSuffix, content) {
+      wrapper.html('<div class="wrapper-' + classSuffix + '">' + content + '</div>');
+    }
+    
     // set page to loading until it's ready
     setWrapper( 'loading', templateLoadingHTML );
 
@@ -144,10 +148,6 @@ google.setOnLoadCallback(function() {
           form.submit();
         });
       }
-    }
-    
-    var setWrapper = function(classSuffix, content) {
-      wrapper.html('<div class="wrapper-' + classSuffix + '">' + content + '</div>');
     }
     
     var pad = function(str, ch, length) {
