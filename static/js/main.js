@@ -292,6 +292,12 @@ google.setOnLoadCallback(function() {
       attachEventsToMenu();
     };
 
+    var goPanic  = function() {
+      if (confirm('Are you sure?')) {
+        goPanicSkills();
+      }
+    };
+    
     var goPanicSkills = function() {
       // build the skills
       var htmlPanicSkills = templatePanicSkills;
