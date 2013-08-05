@@ -229,7 +229,6 @@ google.setOnLoadCallback(function() {
       // build the menu
       var menuData = [
         {name: 'home', label: 'Home'},
-        {name: 'graphs', label: 'Graphs'},
         {name: 'logout', label: 'Logout'},
         {name: 'submit', label: 'Submit'}
       ];
@@ -261,8 +260,6 @@ google.setOnLoadCallback(function() {
       // build the menu
       var menuData = [
         {name: 'home', label: 'Home'},
-        {name: 'add-card', label: 'Add Card'},
-        {name: 'panic', label: 'Panic!'},
         {name: 'logout', label: 'Logout'}
       ];
       var htmlMenu = buildMenu(menuData);
