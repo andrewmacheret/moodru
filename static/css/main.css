@@ -41,12 +41,19 @@ body {
   float: left;
   padding: 10px;
   width: 345px;
-  height: 500px;
+  height: 600px;
 }
 
 #diaries-list  {
   font-size: 18px;
   line-height: 1.5em;
+}
+
+.diary-entry {
+  overflow: auto;
+}
+.diary-entry-date {
+  float: right;
 }
 
 #add-diary {

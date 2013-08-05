@@ -69,9 +69,9 @@
   </script>
 
   <script type="text/template" id="template-diaries-entry">
-    <li>
-      <div><%= emotions %></div>
-      <div><a href="#" onclick="return false" title="<%= dateAbsolute %>"><%= dateRelative %></a></div>
+    <li class="diary-entry">
+      <div class="diary-entry-date"><a href="#" onclick="return false" title="<%= dateAbsolute %>"><%= dateRelative %></a></div>
+      <div class="diary-entry-emotion"><%= emotions %></div>
     </li>
   </script>
 
