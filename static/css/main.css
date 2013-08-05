@@ -110,6 +110,7 @@ body {
 
 #go-logout.menu-item .menu-button {
   background-image: url('/moodru/images/logout.png');
+  bacground-color: white;
 }
 
 .emotion-slider {
