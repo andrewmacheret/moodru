@@ -170,7 +170,7 @@ google.setOnLoadCallback(function() {
       }
       
       var updateEmotionValue = function(e, ui) {
-        var item = var emotionText = $(ui.handle).parent().parent();
+        var item = $(ui.handle).parent().parent();
         
         var emotionAmount = item.children('.emotion-text').children('.emotion-amount');
         emotionAmount.html(pad(ui.value + '%', '&nbsp;', 4));
