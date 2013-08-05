@@ -108,6 +108,10 @@ body {
   background-image: url('/moodru/images/moodru_icon.png');
 }
 
+#go-logout.menu-item .menu-button {
+  background-image: url('/moodru/images/logout.png');
+}
+
 .emotion-slider {
   background-color: #fff !important;
   background-image: -webkit-gradient(linear, left top, right top, from(#fff), to(#f00)) !important;
