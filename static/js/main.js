@@ -191,8 +191,7 @@ google.setOnLoadCallback(function() {
         {name: 'add-card', label: 'Add Card'},
         {name: 'graphs', label: 'Graphs'},
         {name: 'share', label: 'Share'},
-        {name: 'panic', label: 'Panic!'},
-        {name: 'logout', label: 'Logout'}
+        {name: 'panic', label: 'Panic!'}
       ];
       var htmlMenu = buildMenu(menuData);
       
