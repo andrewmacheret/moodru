@@ -198,6 +198,7 @@ google.setOnLoadCallback(function() {
         diaryList += buildDiaryEntry(initDate, diary);
         if (i == 5) {
           diaryList += templateDiariesEntryEtc;
+          break;
         }
       }
       var diaryCount = buildDiaryCount(diaries.length);
