@@ -202,7 +202,7 @@ google.setOnLoadCallback(function() {
       // build the diaries section
       var diaryList = '';
       for (var i=0; i<diaries.length; i++) {
-        if (i == 5) {
+        if (i == 12) {
           diaryList += templateDiariesEntryEtc;
           break;
         }
