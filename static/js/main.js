@@ -175,7 +175,7 @@ google.setOnLoadCallback(function() {
         var r = outOf255;
         var g = 0;
         var b = 0;
-        emotionText.css('color', '3px solid rgb(' + r + ',' + g + ',' + b + ')');
+        emotionAmount.css('color', '3px solid rgb(' + r + ',' + g + ',' + b + ')');
       }
       
       $('.emotion-slider').slider({
