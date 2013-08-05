@@ -120,6 +120,7 @@ body {
   background-image:    -moz-linear-gradient(left, #fff, #f00) !important;
   background-image:      -o-linear-gradient(left, #fff, #f00) !important;
   background-image:         linear-gradient(to right, #fff, #f00) !important;
+  width: 300px;
 }
 
 .emotion-slider, .emotion-slider .ui-slider-handle {
