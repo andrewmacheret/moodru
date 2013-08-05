@@ -11,6 +11,7 @@ google.setOnLoadCallback(function() {
     var templateAddDiaryEmotion = $('#template-add-diary-emotion').html();
     var templateDiaries = $('#template-diaries').html();
     var templateDiariesEntry = $('#template-diaries-entry').html();
+    var templateDiariesEntryEtc = $('#template-diaries-entry-etc').html();
     var templateDiariesCount = $('#template-diaries-count').html();
     var templateChart = $('#template-chart').html();
     var templateMenu = $('#template-button-menu').html();
@@ -53,19 +54,7 @@ google.setOnLoadCallback(function() {
         return;
       }
 
-      var diariesList = $('#diaries-list');
-      if (diariesList) {
-        var htmlDiaryEnty = buildDiaryEntry(data.date, data.diary);
-        $('#diaries-list').html( $('#diaries-list').html() + htmlDiaryEnty );
-
-        var count = Number($('#diaries-count-num').html()) + 1;
-        var diaryCount = buildDiaryCount(count);
-        $('#diaries-count').html(diaryCount);
-
-        diaries.push(data.diary);
-      }
-
-      goGraphs();
+      goHome();
     });
 
     // temporary go to login page on bad connection
@@ -191,7 +180,7 @@ google.setOnLoadCallback(function() {
     var goHome = function() {
       // build the menu
       var menuData = [
-        {name: 'add-card', label: 'Add Diary Card'},
+        {name: 'add-card', label: 'Add Card'},
         {name: 'graphs', label: 'Graphs'},
         {name: 'panic', label: 'Panic!'},
         {name: 'logout', label: 'Logout'}
@@ -205,8 +194,11 @@ google.setOnLoadCallback(function() {
       // build the diaries section
       var diaryList = '';
       for (var i=0; i<diaries.length; i++) {
-        var diary = diaries[i];
+        var diary = diaries[diaries.length - i - 1];
         diaryList += buildDiaryEntry(initDate, diary);
+        if (i == 5) {
+          diaryList += templateDiariesEntryEtc;
+        }
       }
       var diaryCount = buildDiaryCount(diaries.length);
       htmlDiaries = _.template(templateDiaries, {diaryList: diaryList, diaryCount: diaryCount});
@@ -260,7 +252,7 @@ google.setOnLoadCallback(function() {
       // build the menu
       var menuData = [
         {name: 'home', label: 'Home'},
-        {name: 'add-card', label: 'Add Diary Card'},
+        {name: 'add-card', label: 'Add Card'},
         {name: 'panic', label: 'Panic!'},
         {name: 'logout', label: 'Logout'}
       ];
