@@ -76,7 +76,7 @@ google.setOnLoadCallback(function() {
         }
       }
       emotionsList.sort(function(a,b) {return b[0] - a[0];});
-      for (var j=0; j<emotions.length; j++) {
+      for (var j=0; j<emotionsList.length; j++) {
         emotionsList[j] = emotionsList[j].join(' ');
       }
       var emotionsText = emotionsList.slice(0, 2).join(', ');
