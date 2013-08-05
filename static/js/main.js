@@ -187,9 +187,11 @@ google.setOnLoadCallback(function() {
       ];
       var htmlMenu = buildMenu(menuData);
       
+      /*
       // build the user menu
       var welcome = 'Welcome ' + user.displayName + '.';
       htmlUserMenu = _.template(templateUserMenu, {welcome: welcome});
+      */
 
       // build the diaries section
       var diaryList = '';

@@ -37,9 +37,10 @@ body {
   z-index: 1;
 }
 
-#diaries{
+#diaries {
   float: left;
   padding: 10px;
+  width: 345px;
 }
 
 #add-diary {
