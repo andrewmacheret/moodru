@@ -260,7 +260,7 @@ google.setOnLoadCallback(function() {
       // build the menu
       var menuData = [
         {name: 'home', label: 'Home'},
-        {name: 'card', label: 'Add Card'},
+        {name: 'add-card', label: 'Add Diary Card'},
         {name: 'panic', label: 'Panic!'},
         {name: 'logout', label: 'Logout'}
       ];
