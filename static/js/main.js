@@ -75,15 +75,17 @@ google.setOnLoadCallback(function() {
           emotionsList.push( [ diary.emotions[emotion], emotion ] );
         }
       }
-      emotionsList.sort(function(a,b) {return a[0] - b[0];});
+      emotionsList.sort(function(a,b) {return b[0] - a[0];});
       for (var j=0; j<emotions.length; j++) {
         emotionsList[j] = emotionsList[j].join(' ');
       }
+      emotionsList.slice(0, 3);
+      emotionsText = emotionsList.join(', ') + ' ...';
       
       var date = moment(diary.created);
       var dateAbsolute = date.toISOString();
       var dateRelative = date.from(serverDate);
-      return _.template(templateDiariesEntry, {dateAbsolute: dateAbsolute, dateRelative: dateRelative, emotions: emotionsList.join(', ')});
+      return _.template(templateDiariesEntry, {dateAbsolute: dateAbsolute, dateRelative: dateRelative, emotions: emotionsText});
     };
 
     var buildDiaryCount = function(count) {
