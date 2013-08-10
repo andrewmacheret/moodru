@@ -173,7 +173,7 @@ google.setOnLoadCallback(function() {
         
         var outOf255 = Math.floor(ui.value * 255 / 100);
         var r,g,b;
-        if (item.id == 'emotion-item-joy') {
+        if (item[0].id == 'emotion-item-joy') {
           r = 0;
           g = Math.floor(outOf255 * 0.75);
           b = 0;
