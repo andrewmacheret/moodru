@@ -123,6 +123,16 @@ body {
   width: 300px;
 }
 
+#emotion-item-joy .emotion-slider {
+  background-color: #fff !important;
+  background-image: -webkit-gradient(linear, left top, right top, from(#fff), to(#0f0)) !important;
+  background-image: -webkit-linear-gradient(left, #fff, #0f0) !important;
+  background-image:    -moz-linear-gradient(left, #fff, #0f0) !important;
+  background-image:      -o-linear-gradient(left, #fff, #0f0) !important;
+  background-image:         linear-gradient(to right, #fff, #0f0) !important;
+  width: 300px;
+}
+
 .emotion-slider, .emotion-slider .ui-slider-handle {
   cursor: pointer !important;
 }

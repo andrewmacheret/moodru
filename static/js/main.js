@@ -172,9 +172,16 @@ google.setOnLoadCallback(function() {
         emotionField.val(ui.value);
         
         var outOf255 = Math.floor(ui.value * 255 / 100);
-        var r = outOf255;
-        var g = 0;
-        var b = 0;
+        var r,g,b;
+        if (item.id == 'emotion-item-joy') {
+          r = 0;
+          g = Math.floor(outOf255 * 0.75);
+          b = 0;
+        } else {
+          r = outOf255;
+          g = 0;
+          b = 0;
+        }
         emotionAmount.css('color', '3px solid rgb(' + r + ',' + g + ',' + b + ')');
       }
       
