@@ -53,6 +53,14 @@ body {
 .diary-entry {
   overflow: auto;
 }
+.diary-entry-date {
+    float: right;
+    font-style: italic;
+    font-size: 16px;
+}
+.diary-entry-emotion {
+    font-size: 18px
+}
 
 #add-diary {
   float: left;
