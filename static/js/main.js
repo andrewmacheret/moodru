@@ -275,7 +275,7 @@ google.setOnLoadCallback(function() {
         var fields = addDiaryForm.serializeArray();
         var found = false;
         for (var i=0; i<fields.length; i++) {
-          if (a[i].value > 0) {
+          if (fields[i].value > 0) {
             found = true;
             break;
           }
