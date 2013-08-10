@@ -53,9 +53,6 @@ body {
 .diary-entry {
   overflow: auto;
 }
-.diary-entry-date {
-  float: right;
-}
 
 #add-diary {
   float: left;

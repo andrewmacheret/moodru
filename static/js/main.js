@@ -59,7 +59,7 @@ google.setOnLoadCallback(function() {
       initDate = data.date;
       diaries.push( data.diary );
       
-      goSkills();
+      goSkills(data.diary);
     });
 
     // temporary go to login page on bad connection
@@ -71,7 +71,7 @@ google.setOnLoadCallback(function() {
       window.location.replace('/moodru/login');
     });
 
-    var buildDiaryEntry = function(serverDate, diary) {
+    var getSortedEmotions = function(diary) {
       var emotionsList = [];
       for (var j=0; j<emotions.length; j++) {
         var emotion = emotions[j];
@@ -81,6 +81,11 @@ google.setOnLoadCallback(function() {
         }
       }
       emotionsList.sort(function(a,b) {return b[0] - a[0];});
+      return emotionsList;
+    };
+    
+    var buildDiaryEntry = function(serverDate, diary, index) {
+      var emotionsList = getSortedEmotions(diary);
       for (var j=0; j<emotionsList.length; j++) {
         emotionsList[j] = emotionsList[j].join(' ');
       }
@@ -89,7 +94,7 @@ google.setOnLoadCallback(function() {
       var date = moment(diary.created);
       var dateAbsolute = date.toISOString();
       var dateRelative = date.from(serverDate);
-      return _.template(templateDiariesEntry, {dateAbsolute: dateAbsolute, dateRelative: dateRelative, emotions: emotionsText});
+      return _.template(templateDiariesEntry, {dateAbsolute: dateAbsolute, dateRelative: dateRelative, emotions: emotionsText, index: index});
     };
 
     var buildDiaryCount = function(count) {
@@ -213,18 +218,31 @@ google.setOnLoadCallback(function() {
 
       // build the diaries section
       var diaryList = '';
+      var added = 0;
       for (var i=0; i<diaries.length; i++) {
-        if (i == 12) {
+        if (i == 12) { // max 12
           diaryList += templateDiariesEntryEtc;
           break;
         }
-        var diary = diaries[diaries.length - i - 1];
-        diaryList += buildDiaryEntry(initDate, diary);
+        var index = diaries.length - i - 1;
+        var diary = diaries[index];
+        diaryList += buildDiaryEntry(initDate, diary, index);
+        added++;
       }
       var diaryCount = buildDiaryCount(diaries.length);
       htmlDiaries = _.template(templateDiaries, {diaryList: diaryList, diaryCount: diaryCount});
       
       setWrapper('home', '<h1 id="home-head">Home</h1>' + htmlDiaries + htmlMenu);
+      
+      for (var i=0; i<added; i++) {
+        (function() { // scope
+          var index = diaries.length - i - 1;
+          var diary = diaries[index];
+          $('#link-skills-' + index).on('click', function() {
+            goSkills(diary);
+          });
+        })();
+      }
       
       attachEventsToMenu();
     }
@@ -253,11 +271,26 @@ google.setOnLoadCallback(function() {
       // attach events
       var addDiaryForm = $('#add-diary-form');
       addDiaryForm.on('submit', function(e) {
+        // validate
+        var fields = addDiaryForm.serializeArray();
+        var found = false;
+        for (var i=0; i<fields.length; i++) {
+          if (a[i].value > 0) {
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          alert('Cannot submit an empty diary card.');
+          return;
+        }
+        
         if (!confirm('Are you sure you want to add this diary card?')) {
           return;
         }
         
-        var diaryData = {emotions: addDiaryForm.serializeArray()};
+        // submit
+        var diaryData = {emotions: fields};
         socket.emit('diary:put', diaryData);
       });
       
@@ -286,9 +319,12 @@ google.setOnLoadCallback(function() {
       window.location.replace('/moodru/logout');
     };
 
-    var goSkills = function() {
+    var goSkills = function(diary) {
       // build the skills
-      var htmlSkills = templateSkills;
+      var emotionsList = getSortedEmotions(diary);
+      var highestEmotion = emotionsList[0].join(' ');
+      
+      var htmlSkills = _.template(templateSkills, {highestEmotion: highestEmotion});
 
       // build the menu
       var menuData = [
