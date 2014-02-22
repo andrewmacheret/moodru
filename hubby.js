@@ -53,7 +53,7 @@ var config = {
   mongoUrl: 'mongodb://127.0.0.1:27017/test',
   domain: 'andrewmacheret.com',
   port: 80,
-  baseDir: '/moodru',
+  baseDir: '/hubby',
   staticDir: __dirname + '/static'
 };
 var app = require('./init.js').init(mongoose, config);

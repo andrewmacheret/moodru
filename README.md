@@ -1,4 +1,4 @@
-moodru
+hubby
 ======
 
 1. Prereqs:
@@ -8,18 +8,18 @@ moodru
  * the domain name andrewmacheret.com pointing to that server
  * port 80 open on that server
 
-1. Clone the repo
+2. Clone the repo
 ```sh
-git clone https://github.com/andrewmacheret/moodru.git
+git clone https://github.com/andrewmacheret/hubby.git
 ```
 
-1. Install the npm files:
+3. Install the npm files:
 ```sh
-cd moodru
+cd hubby
 sudo ./setup.sh
 ```
 
-1. create a file `express.json` (with permissions `600`) that contains the following: 
+4. create a file `express.json` (with permissions `600`) that contains the following: 
 ```json
 {
 "key": "connect.sid",
@@ -27,7 +27,7 @@ sudo ./setup.sh
 }
 ```
 
-1. create a file `facebook.json` (with permissions `600`) that contains the following:
+5. create a file `facebook.json` (with permissions `600`) that contains the following:
 ```json
 {
 "clientID": "<facebook clientId>",
@@ -35,15 +35,15 @@ sudo ./setup.sh
 }
 ```
 
-1. Start the node server
+6. Start the node server
 To run and be able to terminate with ctrl-c:
 ```sh
-sudo node moodru.js
+sudo node hubby.js
 ```
 ... or to run it in "forever" mode:
 ```sh
-sudo forever start moodru.js
+sudo forever start hubby.js
 ```
 
-1. Test it by going to http://andrewmacheret.com/moodru
+7. Test it by going to http://andrewmacheret.com/hubby
 

@@ -110,11 +110,11 @@ body {
 }
 
 #go-submit.menu-item .menu-button {
-  background-image: url('/moodru/images/moodru_icon.png');
+  background-image: url('/hubby/images/hubby_icon.png');
 }
 
 #go-logout.menu-item .menu-button {
-  background-image: url('/moodru/images/logout.png');
+  background-image: url('/hubby/images/logout.png');
   background-color: white;
 }
 

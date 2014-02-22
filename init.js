@@ -6,7 +6,7 @@ exports.init = function(mongoose, config) {
   // INIT SOME DIRS AND URLS
 
   if (!config) config = {};
-  var baseDir = config.baseDir || '/moodru';
+  var baseDir = config.baseDir || '/hubby';
   var port = config.port || 80;
   var protocol = config.protocol || (port == 443 ? 'https' : 'http' );
   var domain = config.domain || 'andrewmacheret.com';
