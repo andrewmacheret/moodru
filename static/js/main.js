@@ -1,5 +1,3 @@
-google.setOnLoadCallback(function() {
-
   $(function() {
 
     // load the wrapper and templates
@@ -359,5 +357,3 @@ google.setOnLoadCallback(function() {
       attachEventsToMenu();
     };
   });
-
-});
