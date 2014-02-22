@@ -24,7 +24,7 @@
     setWrapper( 'loading', templateLoadingHTML );
 
     // connect to socket.io
-    var socket = io.connect(null, {resource: 'moodru/socket.io'});
+    var socket = io.connect(null, {resource: 'hubby/socket.io'});
 
     // these arrays will be initialized during init
     var emotions = [];
@@ -62,10 +62,10 @@
     // temporary go to login page on bad connection
     // should instead display a bad connection message
     socket.on('connect_failed', function(){
-      window.location.replace('/moodru/login');
+      window.location.replace('/hubby/login');
     });
     socket.on('disconnect', function(){
-      window.location.replace('/moodru/login');
+      window.location.replace('/hubby/login');
     });
 
     var getSortedEmotions = function(diary) {
@@ -313,7 +313,7 @@
     };
 
     var goLogout = function() {
-      window.location.replace('/moodru/logout');
+      window.location.replace('/hubby/logout');
     };
 
     var goSkills = function(diary) {
