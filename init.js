@@ -72,7 +72,7 @@ exports.init = function(mongoose, config) {
   login_pages[baseDir + '/login/index.html'] = true;
   login_pages[baseDir + '/css/login.css'] = true;
   login_pages[baseDir + '/js/login.js'] = true;
-  login_pages[baseDir + '/images/moodru_main_logo.png'] = true;
+  login_pages[baseDir + '/images/hubby_main_logo.png'] = true;
   login_pages[baseDir + '/images/buttons.png'] = true;
 
   // have the server listen to all the allowed paths
