@@ -45,5 +45,5 @@ moodru
    sudo forever start moodru.js
    ```
 
-1. Test it by going to http://andrewmacheret.com/moodru
+1. Test it by going to http://andrewmacheret.com/moodru (this url is not currently operational)
 
