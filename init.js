@@ -22,6 +22,8 @@ exports.init = function(mongoose, config) {
   var fs = require('fs');
   var file = require('file');
   var express = require('express');
+  var session = require('express-session');
+  var cookieParser = require('cookie-parser');
   var app = express();
   var http = require('http');
   var server = http.createServer(app);
@@ -42,15 +44,13 @@ exports.init = function(mongoose, config) {
 
   var expressAuthRaw = fs.readFileSync(__dirname + '/express.json');
   expressAuth = JSON.parse(expressAuthRaw);
-  expressAuth.store = new express.session.MemoryStore;
+  expressAuth.store = new session.MemoryStore;
 
   // configure the express server
-  app.configure(function(){
-    app.use(express.cookieParser());
-    app.use(express.session(expressAuth));
-    app.use(passport.initialize());
-    app.use(passport.session());
-  });
+  app.use(cookieParser());
+  app.use(session(expressAuth));
+  app.use(passport.initialize());
+  app.use(passport.session());
 
 
   // SERVE STATIC FILES
@@ -194,7 +194,7 @@ exports.init = function(mongoose, config) {
   // INIT SOCKET IO AUTHORIZATION
 
   io.set('authorization', passportSocketIo.authorize({
-    cookieParser: express.cookieParser,
+    cookieParser: cookieParser(),
     key:          expressAuth.key,
     secret:       expressAuth.secret,
     store:        expressAuth.store,
